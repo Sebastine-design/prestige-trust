@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prestige Trust - Transactions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      body {
+        background-color: #f0f4f8;
+      }
+
+      .navbar {
+        background: linear-gradient(135deg, #1a3c5e, #2e86c1);
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .back-btn {
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      .nav-right {
+        color: white;
+      }
+
+      .avatar {
+        background-color: white;
+        color: #1a3c5e;
+        font-weight: 700;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .main {
+        padding: 24px;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .summary-cards {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .summary-card {
+        flex: 1;
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      }
+
+      .summary-card i {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+
+      .summary-card p {
+        font-size: 12px;
+        color: #aaa;
+        margin-bottom: 4px;
+      }
+
+      .summary-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .income-card i { color: #27ae60; }
+      .income-card h3 { color: #27ae60; }
+      .expense-card i { color: #e74c3c; }
+      .expense-card h3 { color: #e74c3c; }
+
+      .filter-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .tab {
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid #e0e0e0;
+        background: white;
+        color: #888;
+      }
+
+      .tab.active {
+        background: #1a3c5e;
+        color: white;
+        border-color: #1a3c5e;
+      }
+
+      .transactions {
+        background: white;
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      }
+
+      .transaction-group-title {
+        font-size: 13px;
+        color: #aaa;
+        font-weight: 600;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .transaction-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .transaction-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 14px;
+        font-size: 16px;
+      }
+
+      .shopping { background-color: #fff0e6; color: #e67e22; }
+      .income { background-color: #e6f9f0; color: #27ae60; }
+      .food { background-color: #fde6e6; color: #e74c3c; }
+      .transfer { background-color: #e6eeff; color: #2e86c1; }
+      .bills { background-color: #f3e6ff; color: #9b59b6; }
+      .transport { background-color: #e6fff9; color: #1abc9c; }
+
+      .transaction-details {
+        flex: 1;
+      }
+
+      .transaction-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .transaction-date {
+        font-size: 12px;
+        color: #aaa;
+        margin-top: 3px;
+      }
+
+      .transaction-amount {
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .positive { color: #27ae60; }
+      .negative { color: #e74c3c; }
+
+      .divider {
+        height: 1px;
+        background: #f0f0f0;
+        margin: 4px 0 20px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar">
+      <div class="nav-left">
+        <i class="fas fa-arrow-left back-btn" onclick="window.location.href='dashboard.html'"></i>
+        <span>Transactions</span>
+      </div>
+      <div class="nav-right">
+        <div class="avatar">A</div>
+      </div>
+    </nav>
+
+    <div class="main">
+
+      <!-- Summary Cards -->
+      <div class="summary-cards">
+        <div class="summary-card income-card">
+          <i class="fas fa-arrow-down"></i>
+          <p>Total Income</p>
+          <h3>+$4,200</h3>
+        </div>
+        <div class="summary-card expense-card">
+          <i class="fas fa-arrow-up"></i>
+          <p>Total Expenses</p>
+          <h3>-$1,750</h3>
+        </div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <div class="tab active">All</div>
+        <div class="tab">Income</div>
+        <div class="tab">Expenses</div>
+      </div>
+
+      <!-- Transactions List -->
+      <div class="transactions">
+
+        <p class="transaction-group-title">Today</p>
+
+        <div class="transaction-item">
+          <div class="transaction-icon shopping">
+            <i class="fas fa-shopping-bag"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="transaction-name">Amazon Shopping</p>
+            <p class="transaction-date">10:32 AM</p>
+          </div>
+          <p class="transaction-amount negative">-$45.00</p>
+        </div>
+
+        <div class="transaction-item">
+          <div class="transaction-icon transport">
+            <i class="fas fa-car"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="transaction-name">Uber Ride</p>
+            <p class="transaction-date">8:15 AM</p>
+          </div>
+          <p class="transaction-amount negative">-$12.00</p>
+        </div>
+
+        <div class="divider"></div>
+        <p class="transaction-group-title">Yesterday</p>
+
+        <div class="transaction-item">
+          <div class="transaction-icon income">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="transaction-name">Salary Payment</p>
+            <p class="transaction-date">9:00 AM</p>
+          </div>
+          <p class="transaction-amount positive">+$3,200.00</p>
+        </div>
+
+        <div class="transaction-item">
+          <div class="transaction-icon food">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="transaction-name">Restaurant</p>
+            <p class="transaction-date">7:45 PM</p>
+          </div>
+          <p class="transaction-amount negative">-$28.50</p>
+        </div>
+
+        <div class="divider"></div>
+        <p class="transaction-group-title">Monday</p>
+
+        <div class="transaction-item">
+          <div class="transaction-icon transfer">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="transaction-name">Transfer to John</p>
+            <p class="transaction-date">2:15 PM</p>
+          </div>
+          <p class="transaction-amount negative">-$100.00</p>
+        </div>
+
+        <div class="transaction-item">
+          <div class="transaction-icon bills">
+            <i class="fas fa-file-invoice"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="transaction-name">Electricity Bill</p>
+            <p class="transaction-date">11:00 AM</p>
+          </div>
+          <p class="transaction-amount negative">-$65.00</p>
+        </div>
+
+        <div class="transaction-item">
+          <div class="transaction-icon income">
+            <i class="fas fa-hand-holding-usd"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="transaction-name">Freelance Payment</p>
+            <p class="transaction-date">9:30 AM</p>
+          </div>
+          <p class="transaction-amount positive">+$1,000.00</p>
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+</html>
