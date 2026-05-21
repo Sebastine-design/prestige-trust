@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prestige Trust - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+  </head>
+  <body>
+
+    <!-- Top Navbar -->
+    <nav class="navbar">
+      <div class="nav-left">
+        <i class="fas fa-landmark"></i>
+        <span class="nav-brand">Prestige Trust</span>
+      </div>
+      <div class="nav-right">
+        <span class="welcome">Good morning, Sebastine 👋</span>
+        <i class="fas fa-bell"></i>
+        <div class="avatar">A</div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main">
+
+      <!-- Balance Card -->
+      <div class="balance-card">
+        <p class="balance-label">Total Balance</p>
+        <h1 class="balance-amount">$12,450.00</h1>
+        <p class="account-number">Account: **** **** 4321</p>
+        <div class="card-shine"></div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions">
+        <div class="action-btn" onclick="window.location.href='send.html'">
+          <i class="fas fa-paper-plane"></i>
+          <span>Send</span>
+        </div>
+        <div class="action-btn">
+          <i class="fas fa-download"></i>
+          <span>Receive</span>
+        </div>
+        <div class="action-btn">
+          <i class="fas fa-mobile-alt"></i>
+          <span>Pay Bills</span>
+        </div>
+        <div class="action-btn">
+          <i class="fas fa-ellipsis-h"></i>
+          <span>More</span>
+        </div>
+      </div>
+
+      <!-- Recent Transactions -->
+      <div class="transactions">
+        <h2 class="section-title" onclick="window.location.href='transactions.html'" style="cursor:pointer;">Recent Transactions →</h2>
+
+        <div class="transaction-item">
+          <div class="transaction-icon shopping">
+            <i class="fas fa-shopping-bag"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="transaction-name">Amazon Shopping</p>
+            <p class="transaction-date">Today, 09:42 AM</p>
+          </div>
+          <p class="transaction-amount negative">-$25.00</p>
+        </div>
+
+        <div class="transaction-item">
+          <div class="transaction-icon income">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="transaction-name">Salary Payment</p>
+            <p class="transaction-date">Yesterday, 7:00 AM</p>
+          </div>
+          <p class="transaction-amount positive">+$3,000.00</p>
+        </div>
+
+        <div class="transaction-item">
+          <div class="transaction-icon food">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="transaction-name">Restaurant</p>
+            <p class="transaction-date">Mon, 7:45 PM</p>
+          </div>
+          <p class="transaction-amount negative">-$28.50</p>
+        </div>
+
+        <div class="transaction-item">
+          <div class="transaction-icon transfer">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+          <div class="transaction-details">
+            <p class="transaction-name">Transfer to John</p>
+            <p class="transaction-date">Sun, 2:15 PM</p>
+          </div>
+          <p class="transaction-amount negative">-$100.00</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>

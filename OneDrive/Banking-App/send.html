@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prestige Trust - Send Money</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      body {
+        background-color: #f0f4f8;
+      }
+
+      .navbar {
+        background: linear-gradient(135deg, #1a3c5e, #2e86c1);
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .back-btn {
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      .nav-right {
+        color: white;
+      }
+
+      .avatar {
+        background-color: white;
+        color: #1a3c5e;
+        font-weight: 700;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .main {
+        padding: 24px;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .amount-card {
+        background: linear-gradient(135deg, #1a3c5e, #2e86c1);
+        border-radius: 20px;
+        padding: 30px;
+        color: white;
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      .amount-label {
+        font-size: 14px;
+        opacity: 0.8;
+        margin-bottom: 16px;
+      }
+
+      .amount-input-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .currency {
+        font-size: 32px;
+        font-weight: 700;
+      }
+
+      .amount-input {
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid rgba(255,255,255,0.5);
+        color: white;
+        font-size: 36px;
+        font-weight: 700;
+        width: 180px;
+        text-align: center;
+        outline: none;
+      }
+
+      .amount-input::placeholder {
+        color: rgba(255,255,255,0.5);
+      }
+
+      .balance-info {
+        font-size: 13px;
+        opacity: 0.7;
+      }
+
+      .section {
+        background: white;
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        font-size: 16px;
+        color: #1a3c5e;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .recipients {
+        display: flex;
+        gap: 20px;
+      }
+
+      .recipient {
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .recipient-avatar {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0 auto 6px;
+      }
+
+      .recipient span {
+        font-size: 12px;
+        color: #555;
+      }
+
+      .input-wrapper {
+        position: relative;
+        margin-bottom: 16px;
+      }
+
+      .input-icon {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #aaa;
+        font-size: 15px;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 14px 14px 14px 40px;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 15px;
+        outline: none;
+        transition: border 0.3s;
+      }
+
+      .input-field:focus {
+        border-color: #2e86c1;
+      }
+
+      .send-btn {
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, #1a3c5e, #2e86c1);
+        color: white;
+        border: none;
+        border-radius: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: opacity 0.3s;
+      }
+
+      .send-btn:hover {
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar">
+      <div class="nav-left">
+        <i class="fas fa-arrow-left back-btn" onclick="window.location.href='dashboard.html'"></i>
+        <span class="nav-brand">Send Money</span>
+      </div>
+      <div class="nav-right">
+        <div class="avatar">A</div>
+      </div>
+    </nav>
+
+    <div class="main">
+
+      <div class="amount-card">
+        <p class="amount-label">Enter Amount</p>
+        <div class="amount-input-wrapper">
+          <span class="currency">$</span>
+          <input type="number" class="amount-input" placeholder="0.00">
+        </div>
+        <p class="balance-info">Available balance: <strong>$12,450.00</strong></p>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Recent Recipients</h2>
+        <div class="recipients">
+          <div class="recipient">
+            <div class="recipient-avatar" style="background:#e6eeff; color:#2e86c1;">J</div>
+            <span>Jennifer</span>
+          </div>
+          <div class="recipient">
+            <div class="recipient-avatar" style="background:#e6f9f0; color:#27ae60;">S</div>
+            <span>Sydney</span>
+          </div>
+          <div class="recipient">
+            <div class="recipient-avatar" style="background:#fff0e6; color:#e67e22;">M</div>
+            <span>Successful</span>
+          </div>
+          <div class="recipient">
+            <div class="recipient-avatar" style="background:#fde6e6; color:#e74c3c;">L</div>
+            <span>Lisa</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">New Recipient</h2>
+        <div class="input-wrapper">
+          <i class="fas fa-user input-icon"></i>
+          <input type="text" placeholder="Account Name" class="input-field">
+        </div>
+        <div class="input-wrapper">
+          <i class="fas fa-university input-icon"></i>
+          <input t
