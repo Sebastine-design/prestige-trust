@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prestige Trust - Receive Money</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  body {
+    background-color: #f0f4f8;
+  }
+
+  .navbar {
+    background: linear-gradient(135deg, #1a3c5e, #2e86c1);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .back-btn {
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .nav-right {
+    color: white;
+  }
+
+  .avatar {
+    background-color: white;
+    color: #1a3c5e;
+    font-weight: 700;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .main {
+    padding: 24px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .receive-card {
+    background: linear-gradient(135deg, #1a3c5e, #2e86c1);
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .receive-card h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .receive-card p {
+    font-size: 13px;
+    opacity: 0.8;
+  }
+
+  .qr-code {
+    background: white;
+    width: 160px;
+    height: 160px;
+    border-radius: 16px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+  }
+
+  .section {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: 16px;
+    color: #1a3c5e;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .account-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    background: #f8f9fa;
+    border-radius: 10px;
+  }
+
+  .detail-label {
+    font-size: 13px;
+    color: #aaa;
+  }
+
+  .detail-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+  }
+
+  .copy-btn {
+    background: none;
+    border: none;
+    color: #2e86c1;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .amount-section {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    margin-bottom: 16px;
+  }
+
+  .input-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 15px;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 14px 14px 14px 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.3s;
+  }
+
+  .input-field:focus {
+    border-color: #2e86c1;
+  }
+
+  .receive-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.3s;
+  }
+
+  .receive-btn:hover {
+    opacity: 0.9;
+  }
+</style>
+</head>
+  <body>
+
+    <nav class="navbar">
+      <div class="nav-left">
+        <i class="fas fa-arrow-left back-btn" onclick="window.location.href='dashboard.html'"></i>
+        <span>Receive Money</span>
+      </div>
+      <div class="nav-right">
+        <div class="avatar">A</div>
+      </div>
+    </nav>
+
+    <div class="main">
+
+      <div class="receive-card">
+        <h2>Your Account Details</h2>
+        <p>Share these details to receive money</p>
+        <div class="qr-code">📱</div>
+        <p>Scan QR code to send money</p>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Account Information</h2>
+        <div class="account-details">
+
+          <div class="detail-item">
+            <div>
+              <p class="detail-label">Account Name</p>
+              <p class="detail-value">Sebastine Eke</p>
+            </div>
+            <button class="copy-btn" onclick="copyText('Sebastine Eke')">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+
+          <div class="detail-item">
+            <div>
+              <p class="detail-label">Account Number</p>
+              <p class="detail-value">**** **** 4321</p>
+            </div>
+            <button class="copy-btn" onclick="copyText('00004321')">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+
+          <div class="detail-item">
+            <div>
+              <p class="detail-label">Bank Name</p>
+              <p class="detail-value">Prestige Trust</p>
+            </div>
+            <button class="copy-btn" onclick="copyText('Prestige Trust')">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="amount-section">
+        <h2 class="section-title">Request Specific Amount</h2>
+        <div class="input-wrapper">
+          <i class="fas fa-dollar-sign input-icon"></i>
+          <input type="number" placeholder="Enter amount to request" class="input-field" id="requestAmount">
+        </div>
+        <div class="input-wrapper">
+          <i class="fas fa-pen input-icon"></i>
+          <input type="text" placeholder="Add a note (optional)" class="input-field" id="requestNote">
+        </div>
+        <button class="receive-btn" onclick="requestMoney()">
+          <i class="fas fa-download"></i> Request Money
+        </button>
+      </div>
+
+    </div>
+
+    <script>
+      function copyText(text) {
+        navigator.clipboard.writeText(text).then(function() {
+          alert('Copied to clipboard! ✅');
+        });
+      }
+
+      function requestMoney() {
+        const amount = document.getElementById('requestAmount').value;
+        const note = document.getElementById('requestNote').value;
+
+        if (!amount || amount <= 0) {
+          alert('Please enter a valid amount!');
+          return;
+        }
+
+        alert('Request sent! 🎉 Someone will send you $' + parseFloat(amount).toFixed(2) + (note ? ' for ' + note : '') + '.');
+      }
+    </script>
+
+  </body>
+</html>

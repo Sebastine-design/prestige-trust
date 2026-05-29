@@ -15,10 +15,13 @@
         <span class="nav-brand">Prestige Trust</span>
       </div>
       <div class="nav-right">
-        <span class="welcome">Good morning, Sebastine 👋</span>
-        <i class="fas fa-bell"></i>
-        <div class="avatar">A</div>
-      </div>
+  <span class="welcome">Good morning, Sebastine 👋</span>
+  <i class="fas fa-bell"></i>
+  <div class="avatar">A</div>
+  <button class="logout-btn" onclick="logout()">
+    <i class="fas fa-sign-out-alt"></i>
+  </button>
+</div>
     </nav>
 
     <!-- Main Content -->
@@ -38,10 +41,10 @@
           <i class="fas fa-paper-plane"></i>
           <span>Send</span>
         </div>
-        <div class="action-btn">
-          <i class="fas fa-download"></i>
-          <span>Receive</span>
-        </div>
+        <div class="action-btn" onclick="window.location.href='receive.html'">
+  <i class="fas fa-download"></i>
+  <span>Receive</span>
+</div>
         <div class="action-btn">
           <i class="fas fa-mobile-alt"></i>
           <span>Pay Bills</span>
@@ -110,6 +113,12 @@
 
   const balance = localStorage.getItem("balance");
   document.getElementById("balance").textContent = "$" + parseFloat(balance).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
+  }
+</script>
 </script>
   </body>
 </html>
