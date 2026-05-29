@@ -201,13 +201,21 @@ body {
 
 .positive { color: #27ae60; }
 .negative { color: #e74c3c; }
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
   .main {
-    padding: 16px;
+    padding: 12px;
   }
 
   .balance-amount {
-    font-size: 28px;
+    font-size: 24px;
+  }
+
+  .balance-card {
+    padding: 20px;
   }
 
   .welcome {
@@ -215,18 +223,90 @@ body {
   }
 
   .action-btn {
-    padding: 12px 8px;
+    padding: 10px 6px;
+    width: 23%;
   }
 
   .action-btn i {
     font-size: 16px;
+    margin-bottom: 6px;
   }
 
   .action-btn span {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .navbar {
     padding: 12px 16px;
+  }
+
+  .nav-left {
+    font-size: 16px;
+  }
+
+  .transactions {
+    padding: 16px;
+  }
+
+  .transaction-name {
+    font-size: 13px;
+  }
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .main {
+    padding: 12px;
+  }
+
+  .balance-amount {
+    font-size: 24px;
+  }
+
+  .balance-card {
+    padding: 20px;
+  }
+
+  .welcome {
+    display: none;
+  }
+
+  .action-btn {
+    padding: 10px 6px;
+    width: 23%;
+  }
+
+  .action-btn i {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .action-btn span {
+    font-size: 10px;
+  }
+
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .nav-left {
+    font-size: 16px;
+  }
+
+  .transactions {
+    padding: 16px;
+  }
+
+  .transaction-name {
+    font-size: 13px;
+  }
+
+  .transaction-amount {
+    font-size: 13px;
+  }
+}
+  .transaction-amount {
+    font-size: 13px;
   }
 }
