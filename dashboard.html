@@ -28,12 +28,38 @@
     <div class="main">
 
       <!-- Balance Card -->
-      <div class="balance-card">
-        <p class="balance-label">Total Balance</p>
-        <h1 class="balance-amount" id="balance">$12,450.00</h1>
-        <p class="account-number">Account: **** **** 4321</p>
-        <div class="card-shine"></div>
-      </div>
+      <<!-- Bank Card -->
+<div class="balance-card">
+  <div class="card-top">
+    <div class="card-bank-name">
+      <i class="fas fa-landmark"></i>
+      Prestige Trust
+    </div>
+    <i class="fas fa-wifi card-wifi"></i>
+  </div>
+  <div class="card-middle">
+    <p class="balance-label">Total Balance</p>
+    <h1 class="balance-amount" id="balance">$12,450.00</h1>
+  </div>
+  <div class="card-bottom">
+    <div class="card-info">
+      <p class="card-label">Card Holder</p>
+      <p class="card-value">Sebastine Eke</p>
+    </div>
+    <div class="card-info">
+      <p class="card-label">Expires</p>
+      <p class="card-value">12/28</p>
+    </div>
+    <div class="card-info">
+      <p class="card-label">Account</p>
+      <p class="card-value">**** 4321</p>
+    </div>
+  </div>
+  <div class="card-circles">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+  </div>
+</div>
 
       <!-- Quick Actions -->
       <div class="quick-actions">
@@ -54,7 +80,35 @@
           <span>More</span>
         </div>
       </div>
-
+<!-- Spending Chart -->
+<div class="chart-section">
+  <div class="chart-header">
+    <h2 class="section-title">Monthly Spending</h2>
+    <span class="chart-month">May 2026</span>
+  </div>
+  <div class="chart-bars">
+    <div class="bar-item">
+      <div class="bar-fill" style="height: 60%"></div>
+      <span class="bar-label">Jan</span>
+    </div>
+    <div class="bar-item">
+      <div class="bar-fill" style="height: 80%"></div>
+      <span class="bar-label">Feb</span>
+    </div>
+    <div class="bar-item">
+      <div class="bar-fill" style="height: 45%"></div>
+      <span class="bar-label">Mar</span>
+    </div>
+    <div class="bar-item">
+      <div class="bar-fill" style="height: 90%"></div>
+      <span class="bar-label">Apr</span>
+    </div>
+    <div class="bar-item">
+      <div class="bar-fill active" style="height: 65%"></div>
+      <span class="bar-label">May</span>
+    </div>
+  </div>
+</div>
       <!-- Recent Transactions -->
       <div class="transactions">
         <h2 class="section-title" onclick="window.location.href='transactions.html'" style="cursor:pointer;">Recent Transactions →</h2>
@@ -116,7 +170,7 @@
 
   function logout() {
     localStorage.clear();
-    window.location.href = 'index.html';
+    window.location.href = 'login.html';
   }
 </script>
 </script>

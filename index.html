@@ -2,55 +2,119 @@
 <html>
   <head>
     <title>Prestige Trust</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #1a3c5e, #2e86c1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+
+      .logo-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: popIn 0.6s ease;
+      }
+
+      .logo-circle {
+        width: 100px;
+        height: 100px;
+        background: rgba(255,255,255,0.15);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        border: 2px solid rgba(255,255,255,0.3);
+      }
+
+      .logo-circle i {
+        font-size: 48px;
+        color: white;
+      }
+
+      .bank-name {
+        font-size: 32px;
+        font-weight: 700;
+        color: white;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+      }
+
+      .tagline {
+        font-size: 14px;
+        color: rgba(255,255,255,0.7);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+
+      .loader {
+        margin-top: 60px;
+        display: flex;
+        gap: 8px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        background: rgba(255,255,255,0.5);
+        border-radius: 50%;
+        animation: bounce 1.2s infinite;
+      }
+
+      .dot:nth-child(2) { animation-delay: 0.2s; }
+      .dot:nth-child(3) { animation-delay: 0.4s; }
+
+      @keyframes popIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); opacity: 0.5; }
+        50% { transform: translateY(-10px); opacity: 1; }
+      }
+    </style>
   </head>
   <body>
 
-    <div class="container">
-      <div class="login-card">
-
-        <div class="logo">
-          <i class="fas fa-landmark"></i>
-        </div>
-
-        <h1 class="bank-name">Prestige Trust</h1>
-        <p class="tagline">Secure. Simple. Smart.</p>
-
-        <div class="input-wrapper">
-          <i class="fas fa-envelope input-icon"></i>
-          <input type="text" placeholder="Email Address" class="input-field">
-        </div>
-
-        <div class="input-wrapper">
-          <i class="fas fa-lock input-icon"></i>
-          <input type="password" placeholder="Password" class="input-field">
-        </div>
-
-        <button class="login-btn" onclick="login()">Log In</button>
-
-        <p class="forgot">Forgot password?</p>
-
-        <div class="divider">
-          <span>or</span>
-        </div>
-
-        <p class="signup">Don't have an account? <span class="signup-link">Sign Up</span></p>
-
+    <div class="logo-wrapper">
+      <div class="logo-circle">
+        <i class="fas fa-landmark"></i>
       </div>
+      <h1 class="bank-name">PRESTIGE TRUST</h1>
+      <p class="tagline">Secure. Simple. Smart.</p>
     </div>
-<script>
-  function login() {
-    const email = document.querySelector('input[type="text"]').value;
-    const password = document.querySelector('input[type="password"]').value;
 
-    if (email === "admin@prestigetrust.com" && password === "prestige123") {
-      window.location.href = "dashboard.html";
-    } else {
-      alert("Invalid email or password. Please try again!");
-    }
-  }
-</script>
+    <div class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <script>
+      setTimeout(function() {
+        window.location.href = 'login.html';
+      }, 3000);
+    </script>
+
   </body>
 </html>
