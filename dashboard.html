@@ -26,7 +26,7 @@
       <!-- Balance Card -->
       <div class="balance-card">
         <p class="balance-label">Total Balance</p>
-        <h1 class="balance-amount">$12,450.00</h1>
+        <h1 class="balance-amount" id="balance">$12,450.00</h1>
         <p class="account-number">Account: **** **** 4321</p>
         <div class="card-shine"></div>
       </div>
@@ -102,6 +102,13 @@
       </div>
 
     </div>
+<script>
+  if (!localStorage.getItem("balance")) {
+    localStorage.setItem("balance", 12450.00);
+  }
 
+  const balance = localStorage.getItem("balance");
+  document.getElementById("balance").textContent = "$" + parseFloat(balance).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+</script>
   </body>
 </html>

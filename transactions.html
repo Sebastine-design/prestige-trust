@@ -316,6 +316,36 @@
 
       </div>
     </div>
+<script>
+  function loadTransactions() {
+    const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+    const container = document.querySelector(".transactions");
+    
+    if (transactions.length === 0) return;
 
+    const group = document.createElement("div");
+    group.innerHTML = `<p class="transaction-group-title">My Transfers</p>`;
+    
+    transactions.forEach(function(t) {
+      const item = document.createElement("div");
+      item.className = "transaction-item";
+      item.innerHTML = `
+        <div class="transaction-icon transfer">
+          <i class="fas fa-paper-plane"></i>
+        </div>
+        <div class="transaction-details">
+          <p class="transaction-name">Sent to ${t.recipient}</p>
+          <p class="transaction-date">${t.date}</p>
+        </div>
+        <p class="transaction-amount negative">-$${parseFloat(t.amount).toFixed(2)}</p>
+      `;
+      group.appendChild(item);
+    });
+
+    container.prepend(group);
+  }
+
+  loadTransactions();
+</script>
   </body>
 </html>

@@ -27,7 +27,7 @@
           <input type="password" placeholder="Password" class="input-field">
         </div>
 
-        <button class="login-btn" onclick="window.location.href='dashboard.html'">Log In</button>
+        <button class="login-btn" onclick="login()">Log In</button>
 
         <p class="forgot">Forgot password?</p>
 
@@ -39,6 +39,17 @@
 
       </div>
     </div>
+<script>
+  function login() {
+    const email = document.querySelector('input[type="text"]').value;
+    const password = document.querySelector('input[type="password"]').value;
 
+    if (email === "admin@prestigetrust.com" && password === "prestige123") {
+      window.location.href = "dashboard.html";
+    } else {
+      alert("Invalid email or password. Please try again!");
+    }
+  }
+</script>
   </body>
 </html>
