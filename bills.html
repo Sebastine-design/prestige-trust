@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prestige Trust - Pay Bills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      body { background-color: #f0f4f8; }
+
+      .navbar {
+        background: linear-gradient(135deg, #1a3c5e, #2e86c1);
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .back-btn { cursor: pointer; font-size: 18px; }
+
+      .nav-right { color: white; }
+
+      .avatar {
+        background-color: white;
+        color: #1a3c5e;
+        font-weight: 700;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .main {
+        padding: 24px;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .balance-info {
+        background: linear-gradient(135deg, #1a3c5e, #2e86c1);
+        border-radius: 20px;
+        padding: 20px 24px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+
+      .balance-info p { font-size: 13px; opacity: 0.8; }
+      .balance-info h3 { font-size: 22px; font-weight: 700; }
+
+      .section {
+        background: white;
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        font-size: 16px;
+        color: #1a3c5e;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .bill-categories {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .bill-category {
+        text-align: center;
+        padding: 16px 8px;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .bill-category:hover { transform: translateY(-3px); }
+
+      .bill-category i {
+        font-size: 24px;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .bill-category span {
+        font-size: 12px;
+        font-weight: 600;
+        color: #555;
+      }
+
+      .cat-electricity { background: #fff8e6; }
+      .cat-electricity i { color: #f39c12; }
+      .cat-water { background: #e6f4ff; }
+      .cat-water i { color: #2e86c1; }
+      .cat-internet { background: #e6fff4; }
+      .cat-internet i { color: #27ae60; }
+      .cat-phone { background: #f3e6ff; }
+      .cat-phone i { color: #9b59b6; }
+      .cat-tv { background: #ffe6e6; }
+      .cat-tv i { color: #e74c3c; }
+      .cat-rent { background: #e6eeff; }
+      .cat-rent i { color: #1a3c5e; }
+
+      .bill-list { display: flex; flex-direction: column; gap: 12px; }
+
+      .bill-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px;
+        background: #f8f9fa;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .bill-item:hover { background: #f0f4f8; }
+
+      .bill-left { display: flex; align-items: center; gap: 14px; }
+
+      .bill-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+      }
+
+      .bill-name { font-size: 14px; font-weight: 600; color: #333; }
+      .bill-due { font-size: 12px; color: #aaa; margin-top: 3px; }
+      .bill-amount { font-size: 15px; font-weight: 700; color: #1a3c5e; }
+
+      .pay-btn {
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, #1a3c5e, #2e86c1);
+        color: white;
+        border: none;
+        border-radius: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: opacity 0.3s;
+      }
+
+      .pay-btn:hover { opacity: 0.9; }
+
+      .input-wrapper {
+        position: relative;
+        margin-bottom: 16px;
+      }
+
+      .input-icon {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #aaa;
+        font-size: 15px;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 14px 14px 14px 40px;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 15px;
+        outline: none;
+        transition: border 0.3s;
+      }
+
+      .input-field:focus { border-color: #2e86c1; }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar">
+      <div class="nav-left">
+        <i class="fas fa-arrow-left back-btn" onclick="window.location.href='dashboard.html'"></i>
+        <span>Pay Bills</span>
+      </div>
+      <div class="nav-right">
+        <div class="avatar">A</div>
+      </div>
+    </nav>
+
+    <div class="main">
+
+      <div class="balance-info">
+        <div>
+          <p>Available Balance</p>
+          <h3 id="balance">$12,450.00</h3>
+        </div>
+        <i class="fas fa-landmark" style="font-size: 32px; opacity: 0.3;"></i>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Bill Categories</h2>
+        <div class="bill-categories">
+          <div class="bill-category cat-electricity" onclick="selectBill('Electricity', 120)">
+            <i class="fas fa-bolt"></i>
+            <span>Electricity</span>
+          </div>
+          <div class="bill-category cat-water" onclick="selectBill('Water', 45)">
+            <i class="fas fa-tint"></i>
+            <span>Water</span>
+          </div>
+          <div class="bill-category cat-internet" onclick="selectBill('Internet', 80)">
+            <i class="fas fa-wifi"></i>
+            <span>Internet</span>
+          </div>
+          <div class="bill-category cat-phone" onclick="selectBill('Phone', 60)">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Phone</span>
+          </div>
+          <div class="bill-category cat-tv" onclick="selectBill('Cable TV', 35)">
+            <i class="fas fa-tv"></i>
+            <span>Cable TV</span>
+          </div>
+          <div class="bill-category cat-rent" onclick="selectBill('Rent', 1200)">
+            <i class="fas fa-home"></i>
+            <span>Rent</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Upcoming Bills</h2>
+        <div class="bill-list">
+          <div class="bill-item" onclick="payBill('Electricity', 120)">
+            <div class="bill-left">
+              <div class="bill-icon cat-electricity">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div>
+                <p class="bill-name">Electricity</p>
+                <p class="bill-due">Due: Jun 1, 2026</p>
+              </div>
+            </div>
+            <p class="bill-amount">$120.00</p>
+          </div>
+
+          <div class="bill-item" onclick="payBill('Internet', 80)">
+            <div class="bill-left">
+              <div class="bill-icon cat-internet">
+                <i class="fas fa-wifi"></i>
+              </div>
+              <div>
+                <p class="bill-name">Internet</p>
+                <p class="bill-due">Due: Jun 3, 2026</p>
+              </div>
+            </div>
+            <p class="bill-amount">$80.00</p>
+          </div>
+
+          <div class="bill-item" onclick="payBill('Water', 45)">
+            <div class="bill-left">
+              <div class="bill-icon cat-water">
+                <i class="fas fa-tint"></i>
+              </div>
+              <div>
+                <p class="bill-name">Water</p>
+                <p class="bill-due">Due: Jun 5, 2026</p>
+              </div>
+            </div>
+            <p class="bill-amount">$45.00</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Manual Payment</h2>
+        <div class="input-wrapper">
+          <i class="fas fa-file-invoice input-icon"></i>
+          <input type="text" placeholder="Bill Name" class="input-field" id="billName">
+        </div>
+        <div class="input-wrapper">
+          <i class="fas fa-dollar-sign input-icon"></i>
+          <input type="number" placeholder="Amount" class="input-field" id="billAmount">
+        </div>
+        <button class="pay-btn" onclick="manualPay()">
+          <i class="fas fa-check-circle"></i> Pay Now
+        </button>
+      </div>
+
+    </div>
+
+    <script>
+      if (!localStorage.getItem("balance")) {
+        localStorage.setItem("balance", 12450.00);
+      }
+
+      const balance = localStorage.getItem("balance");
+      document.getElementById("balance").textContent = "$" + parseFloat(balance).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+      function payBill(name, amount) {
+        const currentBalance = parseFloat(localStorage.getItem("balance"));
+        if (amount > currentBalance) {
+          alert("Insufficient funds! 😬");
+          return;
+        }
+        if (confirm("Pay $" + amount + " for " + name + "?")) {
+          const newBalance = currentBalance - amount;
+          localStorage.setItem("balance", newBalance);
+          const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+          transactions.unshift({
+            amount: amount,
+            recipient: name + " Bill",
+            date: new Date().toLocaleString()
+          });
+          localStorage.setItem("transactions", JSON.stringify(transactions));
+          alert("✅ " + name + " bill paid successfully!");
+          window.location.href = "dashboard.html";
+        }
+      }
+
+      function selectBill(name, amount) {
+        document.getElementById("billName").value = name;
+        document.getElementById("billAmount").value = amount;
+      }
+
+      function manualPay() {
+        const name = document.getElementById("billName").value;
+        const amount = parseFloat(document.getElementById("billAmount").value);
+        if (!name || !amount || amount <= 0) {
+          alert("Please enter bill name and amount!");
+          return;
+        }
+        payBill(name, amount);
+      }
+    </script>
+
+  </body>
+</html>
