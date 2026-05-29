@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dashboard.css">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
 
@@ -109,6 +112,8 @@
     </div>
   </div>
 </div>
+<!-- React Component -->
+<div id="spending-summary"></div>
       <!-- Recent Transactions -->
       <div class="transactions">
         <h2 class="section-title" onclick="window.location.href='transactions.html'" style="cursor:pointer;">Recent Transactions →</h2>
@@ -172,6 +177,67 @@
     localStorage.clear();
     window.location.href = 'login.html';
   }
+</script>
+<script type="text/babel">
+  function SpendingSummary() {
+    const [spent, setSpent] = React.useState(0);
+    const [income] = React.useState(4200);
+
+    React.useEffect(() => {
+      const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+      const total = transactions.reduce((sum, t) => sum + parseFloat(t.amount), 0);
+      setSpent(total);
+    }, []);
+
+    const percentage = Math.min((spent / income) * 100, 100).toFixed(0);
+
+    return (
+      <div style={{
+        background: 'white',
+        borderRadius: '20px',
+        padding: '24px',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.07)',
+        marginBottom: '24px'
+      }}>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px'}}>
+          <h2 style={{fontSize: '16px', color: '#1a3c5e', fontWeight: '700'}}>Spending Summary</h2>
+          <span style={{fontSize: '13px', color: '#aaa'}}>This Month</span>
+        </div>
+
+        <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '12px'}}>
+          <div style={{textAlign: 'center'}}>
+            <p style={{fontSize: '12px', color: '#aaa', marginBottom: '4px'}}>SPENT</p>
+            <p style={{fontSize: '20px', fontWeight: '700', color: '#e74c3c'}}>${spent.toFixed(2)}</p>
+          </div>
+          <div style={{textAlign: 'center'}}>
+            <p style={{fontSize: '12px', color: '#aaa', marginBottom: '4px'}}>INCOME</p>
+            <p style={{fontSize: '20px', fontWeight: '700', color: '#27ae60'}}>${income.toFixed(2)}</p>
+          </div>
+          <div style={{textAlign: 'center'}}>
+            <p style={{fontSize: '12px', color: '#aaa', marginBottom: '4px'}}>SAVED</p>
+            <p style={{fontSize: '20px', fontWeight: '700', color: '#1a3c5e'}}>${(income - spent).toFixed(2)}</p>
+          </div>
+        </div>
+
+        <div style={{background: '#f0f4f8', borderRadius: '10px', height: '10px', overflow: 'hidden'}}>
+          <div style={{
+            height: '100%',
+            width: percentage + '%',
+            background: 'linear-gradient(135deg, #e74c3c, #e67e22)',
+            borderRadius: '10px',
+            transition: 'width 0.5s ease'
+          }}></div>
+        </div>
+
+        <p style={{fontSize: '12px', color: '#aaa', marginTop: '8px', textAlign: 'right'}}>
+          {percentage}% of income spent
+        </p>
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById('spending-summary'));
+  root.render(<SpendingSummary />);
 </script>
 </script>
   </body>
