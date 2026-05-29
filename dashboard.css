@@ -201,3 +201,32 @@ body {
 
 .positive { color: #27ae60; }
 .negative { color: #e74c3c; }
+@media (max-width: 600px) {
+  .main {
+    padding: 16px;
+  }
+
+  .balance-amount {
+    font-size: 28px;
+  }
+
+  .welcome {
+    display: none;
+  }
+
+  .action-btn {
+    padding: 12px 8px;
+  }
+
+  .action-btn i {
+    font-size: 16px;
+  }
+
+  .action-btn span {
+    font-size: 11px;
+  }
+
+  .navbar {
+    padding: 12px 16px;
+  }
+}
